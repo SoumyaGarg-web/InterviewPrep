@@ -1,28 +1,26 @@
 class Solution {
 public:
-    vector<int> topKFrequent(vector<int>& nums, int k) {
-    
-        map<int,int>m;
-        priority_queue<pair<int,int>>p;
-        vector<int>t;
+    string frequencySort(string s) {
+        
+        map<char,int>m;
+        string str;
         int i;
-        for(i=0;i<nums.size();i++)
-        {
-            m[nums[i]]++;
+        priority_queue<pair<int,char>>p;
+        for(i=0;i<s.size();i++){
+            m[s[i]]++;
         }
         
-        for(auto j:m)
-        {
-            p.push({j.second,j.first});
+        for(auto k:m){
+            p.push({k.second,k.first});
         }
-        for(i=0;i<k && !p.empty();i++)
-        {
-            t.push_back(p.top().second);
+        
+        while(!p.empty()){
+            int n = p.top().first;
+            for(i=0;i<n;i++){
+                str.push_back(p.top().second);
+            }
             p.pop();
         }
-    
-        return t;
+        return str;
     }
-    
-    
 };
