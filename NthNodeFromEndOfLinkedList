@@ -1,0 +1,48 @@
+#SUBMISSION 1:
+
+int getNthFromLast(Node *head, int n)
+{
+       Node *p = head;
+       int count = 0;
+       while(p!= NULL)
+       {
+           p=p->next;
+           count++;
+       }
+       
+       p = head;
+       int t= count - n +1;
+       if(t<=0)
+       {
+           return -1;
+       }
+       else
+       {
+           for(int i=0;i<t-1;i++)
+           {
+               p=p->next;
+           }
+           return p->data;
+       }
+}
+
+#SUBMISSION 2:
+
+int getNthFromLast(Node *head, int n)
+{
+        int k = n-1;
+        Node *s = head;
+        Node *f = head;
+      
+        while(f!=NULL && k--)
+            f = f->next;
+        
+        if(f==NULL)
+            return -1;
+            
+        while(f->next!=NULL){
+            s = s->next;
+            f = f->next;
+        }
+        return s->data;
+ }       
